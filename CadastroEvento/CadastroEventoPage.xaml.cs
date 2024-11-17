@@ -54,13 +54,30 @@ namespace CadastroEvento
                 }
                 evento.NumeroParticipantes = numeroParticipantes;
 
-                // Valida o orçamento
-                if (!decimal.TryParse(OrcamentoEventoEntry.Text, NumberStyles.Currency, CultureInfo.CurrentCulture, out decimal orcamento))
+                // Valida o orçamento do evento
+                if (!decimal.TryParse(OrcamentoEventoEntry.Text, NumberStyles.Currency, CultureInfo.CurrentCulture, out decimal orcamentoEvento))
                 {
-                    await DisplayAlert("Erro", "O orçamento deve ser um valor numérico válido.", "OK");
+                    await DisplayAlert("Erro", "O orçamento do evento deve ser um valor numérico válido.", "OK");
                     return;
                 }
-                evento.OrcamentoEvento = orcamento;
+                evento.OrcamentoEvento = orcamentoEvento;
+
+                // Valida outras despesas
+                if (!decimal.TryParse(OutrasDespesasEntry.Text, NumberStyles.Currency, CultureInfo.CurrentCulture, out decimal outrasDespesas))
+                {
+                    await DisplayAlert("Erro", "O valor de outras despesas deve ser um número válido.", "OK");
+                    return;
+                }
+                evento.OutrasDespesas = outrasDespesas;
+
+                // Calcula o total do evento (soma)
+                decimal totalEvento = orcamentoEvento + outrasDespesas;
+
+                // Atribui o total ao evento e exibe no formato contábil
+                evento.TotalEvento = totalEvento;
+
+                // Exibe o valor total do evento no formato contábil
+                TotalEventoEntry.Text = totalEvento.ToString("C2", CultureInfo.CurrentCulture); // Formato contábil
 
                 // Valida o contato de emergência
                 if (!string.IsNullOrEmpty(ContatoEmergenciaEntry.Text) && !long.TryParse(ContatoEmergenciaEntry.Text, out _))
@@ -84,6 +101,48 @@ namespace CadastroEvento
                 await DisplayAlert("Erro", $"Ocorreu um erro: {ex.Message}", "OK");
             }
         }
+
+
+
+
+        private void CalculoTotal_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                // Valores iniciais
+                decimal orcamento = 0, outrasDespesas = 0;
+
+                // Verifica se os campos estão preenchidos e tenta converter para decimal
+                if (!string.IsNullOrWhiteSpace(OrcamentoEventoEntry.Text))
+                {
+                    if (!decimal.TryParse(OrcamentoEventoEntry.Text, out orcamento))
+                    {
+                        DisplayAlert("Erro", "O valor do orçamento deve ser numérico.", "OK");
+                        return;
+                    }
+                }
+
+                if (!string.IsNullOrWhiteSpace(OutrasDespesasEntry.Text))
+                {
+                    if (!decimal.TryParse(OutrasDespesasEntry.Text, out outrasDespesas))
+                    {
+                        DisplayAlert("Erro", "O valor das outras despesas deve ser numérico.", "OK");
+                        return;
+                    }
+                }
+
+                // Soma os valores
+                decimal valorTotal = orcamento + outrasDespesas;
+
+                // Exibe o total no formato contábil (R$)
+                TotalEventoEntry.Text = valorTotal.ToString("C", new System.Globalization.CultureInfo("pt-BR"));
+            }
+            catch (Exception ex)
+            {
+                DisplayAlert("Erro", $"Algo deu errado: {ex.Message}", "OK");
+            }
+        }
+
 
     }
 }

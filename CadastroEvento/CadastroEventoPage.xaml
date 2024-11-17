@@ -5,10 +5,10 @@
              Title="Cadastro de Evento"
              BackgroundColor="#F5F5F5">
     <ScrollView>
-        <StackLayout Padding="20">
+        <StackLayout Padding="10" >
             <Label Text="Cadastro de Evento" HorizontalOptions="Center" Margin="10" FontSize="24" FontAttributes="Bold" />
 
-            <Frame>
+            <Frame Margin="4">
                 <StackLayout HeightRequest="340">
                     <!-- Nome do Evento -->
                     <StackLayout Margin="4">
@@ -36,7 +36,7 @@
                 </StackLayout>
             </Frame>
 
-            <Frame WidthRequest="650" HeightRequest="200" Margin="10">
+            <Frame WidthRequest="650" HeightRequest="200" Margin="8">
                 <StackLayout>
                     <Grid ColumnSpacing="20" HorizontalOptions="Center">
                         <Grid.ColumnDefinitions>
@@ -80,47 +80,67 @@
                 </StackLayout>
             </Frame>
 
-            <Frame Margin="10">
+            <Frame Margin="4">
                 <StackLayout>
 
                     <!-- Local do Evento -->
-                    <StackLayout Margin="8">
+                    <StackLayout Margin="4">
                         <Label Text="Local do Evento:"/>
                         <Entry x:Name="LocalEventoEntry" Placeholder="Digite o local do evento" />
                     </StackLayout>
 
                     <!-- Responsável pelo Orçamento -->
-                    <StackLayout Margin="8">
+                    <StackLayout Margin="4">
                         <Label Text="Responsável pelo Orçamento:"/>
                         <Entry x:Name="ResponsavelOrcamentoEntry" Placeholder="Nome do responsável" />
                     </StackLayout>
 
+                    <Grid ColumnSpacing="20" HorizontalOptions="CenterAndExpand">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="300"/>
+                            <ColumnDefinition Width="300"/>
+                        </Grid.ColumnDefinitions>
 
-                    <!-- Orçamento do Evento -->
-                    <StackLayout Margin="8">
-                        <Label Text="Orçamento do Evento (R$):"/>
-                        <Entry x:Name="OrcamentoEventoEntry" Placeholder="Orçamento total estimado" Keyboard="Numeric" />
-                    </StackLayout>
+                        <!-- Orçamento do Evento -->
+                        <StackLayout Margin="4" Grid.Column="0">
+                            <Label Text="Orçamento do Evento (R$):"/>
+                            <Entry x:Name="OrcamentoEventoEntry" Placeholder="Orçamento total estimado" Keyboard="Numeric" />
+                        </StackLayout>
 
+                        <StackLayout Margin="4" Grid.Column="1">
+                            <Label Text="Outras Despesas (R$):"/>
+                            <Entry x:Name="OutrasDespesasEntry" Placeholder="Digite o valor de despesas adicionais" Keyboard="Numeric" />
+                        </StackLayout>
+
+                        <StackLayout Margin="4" Grid.Column="2">
+                            <Label Text="Total do Evento (R$):"/>
+                            <Entry x:Name="TotalEventoEntry" IsReadOnly="True" Placeholder="Digite o valor de despesas adicionais" Keyboard="Numeric" />
+                        </StackLayout>
+                        
+                    </Grid>
+
+                    <Button Text="Calcular" x:Name="CalculoTotal" Clicked="CalculoTotal_Clicked" HorizontalOptions="Center" Grid.Column="3"/>
+                    
                 </StackLayout>
             </Frame>
 
-            <Frame Margin="10">
+            <Frame Margin="8">
                 <StackLayout>
                     <!-- Responsáveis pela Logística -->
-                    <StackLayout Margin="8">
+                    <StackLayout Margin="4">
                         <Label Text="Responsáveis pela Logística:"/>
                         <Entry x:Name="ResponsavelLogisticaEntry" Placeholder="Nome dos responsáveis pela logística" />
                     </StackLayout>
 
                     <!-- Contato para Emergências -->
-                    <StackLayout Margin="8">
+                    <StackLayout Margin="4">
                         <Label Text="Contato para Emergências:"/>
                         <Entry x:Name="ContatoEmergenciaEntry" Placeholder="Telefone para emergências" Keyboard="Numeric" />
                     </StackLayout>
 
                     <!-- Observações Adicionais -->
-                    <StackLayout Margin="8">
+                    <StackLayout Margin="4">
                         <Label Text="Observações Adicionais:"/>
                         <Editor x:Name="ObservacoesEditor" Placeholder="Observações importantes" HeightRequest="100" />
                     </StackLayout>

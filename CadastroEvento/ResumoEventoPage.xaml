@@ -100,6 +100,17 @@
                         <Label Text="Orçamento do Evento (R$):"/>
                         <Entry IsReadOnly="True" Text="{Binding OrcamentoEvento,StringFormat='R$ {0:N2}'}" />
                     </StackLayout>
+                    
+
+                    <StackLayout Margin="8">
+                        <Label Text="Outras Despesas (R$):"/>
+                        <Entry IsReadOnly="True" Text="{Binding OutrasDespesas,StringFormat='R$ {0:N2}'}" />
+                    </StackLayout>
+
+                    <StackLayout Margin="8">
+                        <Label Text="Total Evento (R$):"/>
+                        <Entry IsReadOnly="True" Text="{Binding TotalEvento,StringFormat='R$ {0:N2}'}" />
+                    </StackLayout>
 
                 </StackLayout>
             </Frame>

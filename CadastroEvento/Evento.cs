@@ -13,6 +13,10 @@ namespace CadastroEvento
         public string? Descricao { get; set; }
         public string? NomeOrganizador { get; set; }
         public int NumeroParticipantes { get; set; }
+
+        public decimal OutrasDespesas { get; set; }
+        public decimal TotalEvento { get; set; }
+
         public decimal OrcamentoEvento { get; set; }
         public string? ResponsavelOrcamento { get; set; }
         public string? ResponsavelLogistica { get; set; }
