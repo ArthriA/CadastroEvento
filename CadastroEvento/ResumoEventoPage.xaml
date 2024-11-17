@@ -1,0 +1,112 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="CadastroEvento.ResumoEventoPage"
+             BackgroundColor="#F5F5F5">
+
+    <ScrollView>
+        <StackLayout Padding="20">
+            <Label Text="Resumo do Evento" FontSize="24" FontAttributes="Bold" HorizontalOptions="Center" />
+
+            <!-- Nome do Evento -->
+            <StackLayout Margin="12">
+                <Label Text="Nome do Evento:"/>
+                <Label Text="{Binding NomeEvento}" />
+            </StackLayout>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+            </Grid>
+
+            <!-- Data do Evento -->
+            <StackLayout Margin="12">
+                <Label Text="Data de Início:"/>
+                <Label Text="{Binding DataInicio, StringFormat='{0:dd/MM/yyyy}'}" />
+            </StackLayout>
+
+            <!-- Hora de Início -->
+            <StackLayout Margin="12">
+                <Label Text="Hora de Início:"/>
+                <Label Text="{Binding HorarioInicio, StringFormat='{0:HH:mm}'}" />
+            </StackLayout>
+
+            <!-- Data de Término -->
+            <StackLayout Margin="12">
+                <Label Text="Data de Término:"/>
+                <Label Text="{Binding DataFim, StringFormat='{0:dd/MM/yyyy}'}" />
+            </StackLayout>
+
+            <!-- Hora de Término -->
+            <StackLayout Margin="12">
+                <Label Text="Hora de Término:"/>
+                <Label Text="{Binding HorarioTermino, StringFormat='{0:HH:mm}'}" />
+            </StackLayout>
+
+            <!-- Duração do Evento -->
+            <StackLayout Margin="12">
+                <Label Text="Duração do Evento (em dias):"/>
+                <Label Text="{Binding DuracaoEvento}" />
+            </StackLayout>
+
+            <!-- Local do Evento -->
+            <StackLayout Margin="12">
+                <Label Text="Local do Evento:"/>
+                <Label Text="{Binding Local}" />
+            </StackLayout>
+
+            <StackLayout Margin="12">
+                <Label Text="Descrição do Evento:"/>
+                <Label Text="{Binding Descricao}"/>
+            </StackLayout>
+
+            <!-- Número de Participantes -->
+            <StackLayout Margin="12">
+                <Label Text="Número de Participantes:"/>
+                <Label Text="{Binding NumeroParticipantes}" />
+            </StackLayout>
+
+            <!-- Orçamento do Evento -->
+            <StackLayout Margin="12">
+                <Label Text="Orçamento do Evento (R$):"/>
+                <Label Text="{Binding OrcamentoEvento, StringFormat='R$ {0:N2}'}" />
+            </StackLayout>
+
+            <!-- Responsável pelo Orçamento -->
+            <StackLayout Margin="12">
+                <Label Text="Responsável pelo Orçamento:"/>
+                <Label Text="{Binding ResponsavelOrcamento}" />
+            </StackLayout>
+
+            <StackLayout Margin="12">
+                <Label Text="Responsáveis pela Logística:"/>
+                <Label Text="{Binding ResponsavelLogistica}"/>
+            </StackLayout>
+
+            <StackLayout Margin="12">
+                <Label Text="Contato para Emergências:"/>
+                <Label Text="{Binding ContatoEmergencia}"/>
+            </StackLayout>
+
+            <StackLayout Margin="12">
+                <Label Text="Observações Adicionais:"/>
+                <Label Text="{Binding Observacoes}"/>
+            </StackLayout>
+
+
+            <!-- Botão Voltar -->
+            <Button Text="Voltar" Margin="12" Clicked="OnVoltarClicked"/>
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

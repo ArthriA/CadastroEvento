@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CadastroEvento.CadastroEventoPage"
+             Title="Cadastro de Evento">
+    <ScrollView>
+        <StackLayout Padding="20">
+            <Label Text="Cadastro de Evento" HorizontalOptions="Center" Margin="10" FontSize="24" FontAttributes="Bold" />
+
+            <Frame>
+                <StackLayout HeightRequest="340">
+                    <!-- Nome do Evento -->
+                    <StackLayout Margin="4">
+                        <Label Text="Nome do Evento:"/>
+                        <Entry x:Name="NomeEventoEntry" Placeholder="Digite o nome do evento" />
+                    </StackLayout>
+
+                    <!-- Nome do Organizador -->
+                    <StackLayout Margin="4">
+                        <Label Text="Nome do Organizador:"/>
+                        <Entry x:Name="NomeOrganizadorEntry" Placeholder="Nome do organizador" />
+                    </StackLayout>
+
+                    <!-- Descrição do Evento -->
+                    <StackLayout Margin="4">
+                        <Label Text="Descrição do Evento:"/>
+                        <Editor x:Name="DescricaoEventoEditor" Placeholder="Descreva o evento" HeightRequest="100" />
+                    </StackLayout>
+
+                    <!-- Número de Participantes Esperados -->
+                    <StackLayout Margin="4">
+                        <Label Text="Número de Participantes Esperados:"/>
+                        <Entry x:Name="NumeroParticipantesEntry" Placeholder="Número estimado de participantes" Keyboard="Numeric" />
+                        <Image x:Name="NumeroParticipantesError" Source="exclamation_icon.png" IsVisible="False" WidthRequest="20" HeightRequest="20" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
+
+            <Frame WidthRequest="650" HeightRequest="200" Margin="10">
+                <StackLayout>
+                    <Grid ColumnSpacing="20" HorizontalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+
+                        <!-- Data de Início do Evento -->
+                        <StackLayout Grid.Column="0" Grid.Row="0" Margin="12">
+                            <Label HorizontalOptions="Center" Text="Data de Início do Evento:" />
+                            <DatePicker HorizontalOptions="Center" x:Name="DataEventoPicker" Format="dd/MM/yyyy" Date="{Binding Evento.DataInicio}" />
+                        </StackLayout>
+
+                        <!-- Data Final do Evento -->
+                        <StackLayout Grid.Column="1" Grid.Row="0" Margin="12">
+                            <Label HorizontalOptions="Center" Text="Data Final do Evento:" />
+                            <DatePicker HorizontalOptions="Center" x:Name="DataFimEventoPicker" Format="dd/MM/yyyy" Date="{Binding Evento.DataFim}" />
+                        </StackLayout>
+
+                        <!-- Horário de Início -->
+                        <StackLayout Grid.Column="0" Grid.Row="1" Margin="12">
+                            <Label HorizontalOptions="Center" Text="Horário de Início:" />
+                            <TimePicker x:Name="HorarioInicioPicker" Time="{Binding Evento.HorarioInicio}" />
+                        </StackLayout>
+
+                        <!-- Horário de Término -->
+                        <StackLayout Grid.Column="1" Grid.Row="1" Margin="12">
+                            <Label HorizontalOptions="Center" Text="Horário de Término:" />
+                            <TimePicker x:Name="HorarioTerminoPicker" Time="{Binding Evento.HorarioFim}" />
+                        </StackLayout>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+
+            <Frame Margin="10">
+                <StackLayout>
+
+                    <!-- Local do Evento -->
+                    <StackLayout Margin="12">
+                        <Label Text="Local do Evento:"/>
+                        <Entry x:Name="LocalEventoEntry" Placeholder="Digite o local do evento" />
+                    </StackLayout>
+
+                    <!-- Responsável pelo Orçamento -->
+                    <StackLayout Margin="12">
+                        <Label Text="Responsável pelo Orçamento:"/>
+                        <Entry x:Name="ResponsavelOrcamentoEntry" Placeholder="Nome do responsável" />
+                    </StackLayout>
+
+
+                    <!-- Orçamento do Evento -->
+                    <StackLayout Margin="12">
+                        <Label Text="Orçamento do Evento (R$):"/>
+                        <Entry x:Name="OrcamentoEventoEntry" Placeholder="Orçamento total estimado" Keyboard="Numeric" />
+                        <Image x:Name="OrcamentoError" Source="exclamation_icon.png" IsVisible="False" WidthRequest="20" HeightRequest="20" />
+                    </StackLayout>
+
+                </StackLayout>
+            </Frame>
+
+            <!-- Responsáveis pela Logística -->
+            <StackLayout Margin="12">
+                <Label Text="Responsáveis pela Logística:"/>
+                <Entry x:Name="ResponsavelLogisticaEntry" Placeholder="Nome dos responsáveis pela logística" />
+            </StackLayout>
+
+            <!-- Contato para Emergências -->
+            <StackLayout Margin="12">
+                <Label Text="Contato para Emergências:"/>
+                <Entry x:Name="ContatoEmergenciaEntry" Placeholder="Telefone para emergências" Keyboard="Numeric" />
+                <Image x:Name="ContatoEmergenciaError" Source="exclamation_icon.png" IsVisible="False" WidthRequest="20" HeightRequest="20" />
+            </StackLayout>
+
+            <!-- Observações Adicionais -->
+            <StackLayout Margin="12">
+                <Label Text="Observações Adicionais:"/>
+                <Editor x:Name="ObservacoesEditor" Placeholder="Observações importantes" HeightRequest="100" />
+            </StackLayout>
+
+            <!-- Botão para Salvar -->
+            <Button Text="Salvar Cadastro do Evento" Clicked="OnSalvarEventoClicked" />
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
