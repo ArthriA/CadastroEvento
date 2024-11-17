@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="CadastroEvento.CadastroEventoPage"
-             Title="Cadastro de Evento">
+             Title="Cadastro de Evento"
+             BackgroundColor="#F5F5F5">
     <ScrollView>
         <StackLayout Padding="20">
             <Label Text="Cadastro de Evento" HorizontalOptions="Center" Margin="10" FontSize="24" FontAttributes="Bold" />
@@ -31,7 +32,6 @@
                     <StackLayout Margin="4">
                         <Label Text="Número de Participantes Esperados:"/>
                         <Entry x:Name="NumeroParticipantesEntry" Placeholder="Número estimado de participantes" Keyboard="Numeric" />
-                        <Image x:Name="NumeroParticipantesError" Source="exclamation_icon.png" IsVisible="False" WidthRequest="20" HeightRequest="20" />
                     </StackLayout>
                 </StackLayout>
             </Frame>
@@ -84,49 +84,51 @@
                 <StackLayout>
 
                     <!-- Local do Evento -->
-                    <StackLayout Margin="12">
+                    <StackLayout Margin="8">
                         <Label Text="Local do Evento:"/>
                         <Entry x:Name="LocalEventoEntry" Placeholder="Digite o local do evento" />
                     </StackLayout>
 
                     <!-- Responsável pelo Orçamento -->
-                    <StackLayout Margin="12">
+                    <StackLayout Margin="8">
                         <Label Text="Responsável pelo Orçamento:"/>
                         <Entry x:Name="ResponsavelOrcamentoEntry" Placeholder="Nome do responsável" />
                     </StackLayout>
 
 
                     <!-- Orçamento do Evento -->
-                    <StackLayout Margin="12">
+                    <StackLayout Margin="8">
                         <Label Text="Orçamento do Evento (R$):"/>
                         <Entry x:Name="OrcamentoEventoEntry" Placeholder="Orçamento total estimado" Keyboard="Numeric" />
-                        <Image x:Name="OrcamentoError" Source="exclamation_icon.png" IsVisible="False" WidthRequest="20" HeightRequest="20" />
                     </StackLayout>
 
                 </StackLayout>
             </Frame>
 
-            <!-- Responsáveis pela Logística -->
-            <StackLayout Margin="12">
-                <Label Text="Responsáveis pela Logística:"/>
-                <Entry x:Name="ResponsavelLogisticaEntry" Placeholder="Nome dos responsáveis pela logística" />
-            </StackLayout>
+            <Frame Margin="10">
+                <StackLayout>
+                    <!-- Responsáveis pela Logística -->
+                    <StackLayout Margin="8">
+                        <Label Text="Responsáveis pela Logística:"/>
+                        <Entry x:Name="ResponsavelLogisticaEntry" Placeholder="Nome dos responsáveis pela logística" />
+                    </StackLayout>
 
-            <!-- Contato para Emergências -->
-            <StackLayout Margin="12">
-                <Label Text="Contato para Emergências:"/>
-                <Entry x:Name="ContatoEmergenciaEntry" Placeholder="Telefone para emergências" Keyboard="Numeric" />
-                <Image x:Name="ContatoEmergenciaError" Source="exclamation_icon.png" IsVisible="False" WidthRequest="20" HeightRequest="20" />
-            </StackLayout>
+                    <!-- Contato para Emergências -->
+                    <StackLayout Margin="8">
+                        <Label Text="Contato para Emergências:"/>
+                        <Entry x:Name="ContatoEmergenciaEntry" Placeholder="Telefone para emergências" Keyboard="Numeric" />
+                    </StackLayout>
 
-            <!-- Observações Adicionais -->
-            <StackLayout Margin="12">
-                <Label Text="Observações Adicionais:"/>
-                <Editor x:Name="ObservacoesEditor" Placeholder="Observações importantes" HeightRequest="100" />
-            </StackLayout>
+                    <!-- Observações Adicionais -->
+                    <StackLayout Margin="8">
+                        <Label Text="Observações Adicionais:"/>
+                        <Editor x:Name="ObservacoesEditor" Placeholder="Observações importantes" HeightRequest="100" />
+                    </StackLayout>
+                </StackLayout>
+            </Frame>
 
             <!-- Botão para Salvar -->
-            <Button Text="Salvar Cadastro do Evento" Clicked="OnSalvarEventoClicked" />
+            <Button Text="Cadastrar Evento" Clicked="OnSalvarEventoClicked" />
         </StackLayout>
     </ScrollView>
 </ContentPage>
